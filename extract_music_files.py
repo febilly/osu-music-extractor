@@ -74,9 +74,9 @@ for song in os.listdir(inputdir):
         print(song)
         print(name)
     except BaseException:
-        print("Error when processing the name. Skipped.")
+        print("Error when processing the name. Skipped.\n")
         continue
-        
+
     if os.path.isfile(outputdir + "/" + name):
         print(outputdir + "/" + name + " already exists. Skipped.\n")
         continue
