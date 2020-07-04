@@ -40,7 +40,6 @@ if inputdir == "":
 
 #inputdir = "C:/Users/{}/AppData/Local/osu!/Songs".format(getpass.getuser())
 outputdir = filedialog.askdirectory(title = "Select a output Folder.")
-
 if outputdir == "":
     exit()
 
@@ -76,7 +75,8 @@ for song in os.listdir(inputdir):
         print(name)
     except BaseException:
         print("Error when processing the name. Skipped.")
-
+        continue
+        
     if os.path.isfile(outputdir + "/" + name):
         print(outputdir + "/" + name + " already exists. Skipped.\n")
         continue
