@@ -52,16 +52,16 @@ in_l = []
 out_l = []
 
 for song in os.listdir(inputdir):
-    now = inputdir + "/" + song
-    print("Scanning " + now)
+    songdir = inputdir + "/" + song
+    print("Scanning " + songdir)
 
-    if os.path.isfile(now):
-        print(now + " isn't a directory. Skipped.\n")
+    if os.path.isfile(songdir):
+        print(songdir + " isn't a directory. Skipped.\n")
         continue
 
-    found = locate(now,outputdir)
+    found = locate(songdir,outputdir)
     if found == False:
-        print("Nothing found in " + now + ". Skipped.\n")
+        print("Nothing found in " + songdir + ". Skipped.\n")
         continue
     
     name = song
@@ -76,15 +76,16 @@ for song in os.listdir(inputdir):
     except BaseException:
         print("Error when processing the name. Skipped.\n")
         continue
-
-    if os.path.isfile(outputdir + "/" + name):
-        print(outputdir + "/" + name + " already exists. Skipped.\n")
+    
+    outputpath = outputdir + "/" + name
+    if os.path.exists(outputpath):
+        print(outputpath + " already exists. Skipped.\n")
         continue
 
     print("\n")
 
     in_l.append(found)
-    out_l.append(outputdir + "/" + name)
+    out_l.append(outputpath)
 
 for i in range(len(in_l)):
     print("From: " + in_l[i])
