@@ -87,8 +87,15 @@ for song in os.listdir(inputdir):
     in_l.append(found)
     out_l.append(outputpath)
 
+if in_l == []:
+    print("Nothing found in " + inputdir + "\nPress Enter to exit.")
+    input
+    exit()
+
 for i in range(len(in_l)):
     print("From: " + in_l[i])
     print("To:   " + out_l[i])
     shutil.copy(in_l[i],out_l[i])
     print("Copied.\n")
+
+print("Done.")
