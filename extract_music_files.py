@@ -1,11 +1,10 @@
 def locate(d,outputdir):
     import os
 
-    name_l = os.listdir(d)
     size_l = []
     mp3 = []
 
-    for i in name_l:
+    for i in os.listdir(d):
         i = d + "/" + i
         if os.path.isdir(i):
             continue
@@ -67,10 +66,12 @@ for song in os.listdir(inputdir):
     name = song
     try:
         if ord(song[:1]) in range(48,58):
-            name = name[name.index(" ")+1:]
+            name = name.split(" ",1)[1]
         if title_artist:
-            name = name[name.index(" - ") + 3:] + " - " + name[:name.index(" - ")] + ".mp3"
+            name = name.split(" - ",1)[1] + " - " + name.split(" - ",1)[0]
+            #name = name[name.index(" - ") + 3:] + " - " + name[:name.index(" - ")]
         
+        name += ".mp3"
         print(song)
         print(name)
     except BaseException:
@@ -88,7 +89,7 @@ for song in os.listdir(inputdir):
     out_l.append(outputpath)
 
 if in_l == []:
-    print("Nothing found in " + inputdir + "\nPress Enter to exit.")
+    print("Nothing found in " + inputdir + ".\nPress Enter to exit.")
     input
     exit()
 
