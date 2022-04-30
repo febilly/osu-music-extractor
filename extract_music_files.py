@@ -90,7 +90,7 @@ for song in os.listdir(inputdir):
 
 if in_l == []:
     print("Nothing found in " + inputdir + ".\nPress Enter to exit.")
-    input
+    input()
     exit()
 
 for i in range(len(in_l)):
